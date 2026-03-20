@@ -1,0 +1,8 @@
+{
+  "name": "vc-pitch-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx -y serve . -l 3000"
+  }
+}

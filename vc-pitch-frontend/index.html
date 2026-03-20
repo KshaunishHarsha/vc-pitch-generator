@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VC Pitch Generator — Turn Any Stupid Idea Into a VC Pitch</title>
+  <meta name="description" content="Transform any ridiculous startup idea into a buzzword-heavy, investor-ready VC pitch. Powered by AI. Built for laughs." />
+  <meta property="og:title" content="VC Pitch Generator" />
+  <meta property="og:description" content="Turn any stupid idea into a VC pitch. Try it!" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- PDF Export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ══════════════════════ TOAST CONTAINER ══════════════════════ -->
+  <div id="toast-container" aria-live="polite"></div>
+
+  <!-- ══════════════════════ INPUT VIEW ══════════════════════ -->
+  <main id="input-view" class="view active">
+    <!-- Hero -->
+    <section class="hero" id="hero-section">
+      <div class="hero-badge">🤖 AI-Powered Pitch Machine</div>
+      <h1 class="hero-title">
+        Turn Any <span class="gradient-text">Stupid Idea</span><br />Into a VC Pitch
+      </h1>
+      <p class="hero-subtitle">
+        Type your ridiculous startup idea and watch AI transform it into a buzzword-heavy, investor-ready pitch deck — complete with a brutal <em>Reality Check</em>.
+      </p>
+    </section>
+
+    <!-- Input Area -->
+    <section class="input-section" id="input-section">
+      <div class="textarea-wrapper">
+        <textarea
+          id="idea-input"
+          placeholder="e.g. Uber for dog walking, LinkedIn for plants, AI alarm clock that judges you..."
+          maxlength="200"
+          rows="3"
+        ></textarea>
+        <div class="char-counter" id="char-counter">
+          <span id="char-current">0</span>/200
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button id="generate-btn" class="btn btn-primary" disabled>
+          <span class="btn-text">🚀 Generate My Pitch</span>
+          <span class="btn-loader" aria-hidden="true"></span>
+        </button>
+        <button id="surprise-btn" class="btn btn-secondary">
+          🎲 Surprise Me
+        </button>
+      </div>
+    </section>
+
+    <!-- Example Ideas -->
+    <section class="examples-section" id="examples-section">
+      <h2 class="section-label">💡 Try one of these</h2>
+      <div class="examples-grid" id="examples-grid">
+        <!-- JS will populate -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════════════════ LOADING VIEW ══════════════════════ -->
+  <div id="loading-view" class="view">
+    <div class="loading-container">
+      <div class="loading-emoji" id="loading-emoji">🚀</div>
+      <h2 class="loading-headline">Forging Your Pitch Deck</h2>
+      <p class="loading-subline">in the fires of Silicon Valley…</p>
+      <div class="loading-stages" id="loading-stages">
+        <!-- JS will populate stage lines -->
+      </div>
+      <div class="loading-progress-wrapper">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill"></div>
+        </div>
+        <p class="loading-stage-counter" id="loading-stage-counter">Stage 1 of 8</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════ PITCH VIEW ══════════════════════ -->
+  <div id="pitch-view" class="view">
+    <!-- Action Bar -->
+    <div class="action-bar" id="action-bar">
+      <button id="back-btn" class="btn btn-ghost">
+        ← Back
+      </button>
+      <div class="action-bar-right">
+        <button id="toggle-all-btn" class="btn btn-ghost" data-state="collapsed">
+          Expand All
+        </button>
+        <button id="copy-all-btn" class="btn btn-ghost">
+          📋 Copy All
+        </button>
+        <button id="download-pdf-btn" class="btn btn-ghost">
+          📄 Download PDF
+        </button>
+        <button id="share-btn" class="btn btn-ghost">
+          🔗 Share
+        </button>
+      </div>
+    </div>
+
+    <!-- Pitch Header -->
+    <div class="pitch-header" id="pitch-header">
+      <div class="pitch-header-badge">✨ Your Pitch is Ready</div>
+      <h2 class="pitch-header-idea" id="pitch-idea-display"></h2>
+    </div>
+
+    <!-- Startup Name Hero (JS will populate) -->
+    <div class="pitch-hero" id="pitch-hero" style="display:none;">
+      <div class="pitch-hero-inner">
+        <div class="startup-name" id="startup-name"></div>
+        <div class="startup-tagline" id="startup-tagline"></div>
+      </div>
+    </div>
+
+    <!-- Cards Container -->
+    <div class="cards-container" id="cards-container">
+      <!-- JS will populate -->
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
