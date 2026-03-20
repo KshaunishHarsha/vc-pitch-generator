@@ -3,6 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "npx -y serve . -l 3000"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "vc",
+    "startup",
+    "pitch",
+    "generator",
+    "ai"
+  ],
+  "author": "Kshaunish Harsha",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^8.0.1"
   }
 }

@@ -1,0 +1,15 @@
+{
+  "buildCommand": "npm run build || exit 0",
+  "devCommand": "npm run dev",
+  "outputDirectory": "./",
+  "public": true,
+  "env": {
+    "VITE_API_URL": "@api_url"
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

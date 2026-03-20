@@ -2,7 +2,19 @@
    VC PITCH GENERATOR — App logic
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-const API_BASE = 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+// Then in your fetch calls:
+async function generatePitch(idea) {
+  const response = await fetch(`${API_URL}/api/generate-pitch`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ idea })
+  });
+  return response.json();
+}
 
 /* ── Fallback examples (used if API is unavailable) ── */
 const FALLBACK_EXAMPLES = [
@@ -124,7 +136,7 @@ function onInputChange() {
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 async function fetchExamples() {
   try {
-    const res = await fetch(`${API_BASE}/api/examples`);
+    const res = await fetch(`${API_URL}/api/examples`);
     const data = await res.json();
     if (data.success && Array.isArray(data.examples)) {
       examples = data.examples;
@@ -180,7 +192,7 @@ async function onGenerate() {
   startLoadingMessages();
 
   try {
-    const res = await fetch(`${API_BASE}/api/generate-pitch`, {
+    const res = await fetch(`${API_URL}/api/generate-pitch`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ idea }),
